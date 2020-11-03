@@ -3,7 +3,7 @@ package de.bitmark.services;
 public class Person {
 	
 	private String vorname,name;
-
+	private int alter = 18;
 	
 	public Person() {
 		this("John","Doe");
@@ -29,12 +29,17 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	public int getAlter() {
+		return alter;
+	}
+	private void setAlter(int alter) {
+		this.alter = alter;
+	}
 	@Override
 	public String toString() {
-		return "Person [vorname=" + vorname + ", name=" + name + "]";
+		return "Person [vorname=" + vorname + ", name=" + name + ", alter=" + alter + "]";
 	}
-	
+
 	
 
 }
