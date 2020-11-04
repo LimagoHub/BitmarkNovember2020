@@ -43,7 +43,9 @@ public class App {
 //		
 		final List<String> items = List.of("1","x","2","3", "4");
 		
-		final ForkJoinPool pool = ForkJoinPool.commonPool();
+		final var pool = ForkJoinPool.commonPool();
+		
+		
 		
 		final SubmissionPublisher<String> publisher = new SubmissionPublisher<String>(pool, 1);
 		final TransformProcessor<String, Integer> transformProcessor = new TransformProcessor<>(this::myFunction);
