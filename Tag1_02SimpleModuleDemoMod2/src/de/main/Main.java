@@ -1,6 +1,8 @@
 package de.main;
 
 import java.lang.reflect.Method;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ServiceLoader;
 
 
@@ -13,17 +15,26 @@ import de.commons.StringUtils;
 public class Main {
 
 	public static void main(String[] args) throws Exception{
-	
-			PersonService ps = PersonService.getInstance().get();
-			
-			ps.save(new Person());
-		
-			
-			Person p = new Person();
-			p.setVorname(StringUtils.toUpper(p.getVorname()));
-			
-			System.out.println(p);
 
+		
+		StringBuilder s = new StringBuilder();
+		
+		Instant start = Instant.now(); 
+		
+		for (int i = 0; i < 2_000_000; i++) {
+			s.append( "a");
+		}
+		String ergebnis = s.toString();
+		Instant ende = Instant.now(); 
+		
+		Duration duration = Duration.between(start, ende);
+		System.out.println("Duration = " + duration.toMillis());
+		
+//			PersonService ps = PersonService.getInstance().get();
+//			
+//			Client client  = new Client(ps);
+//			
+//			client.run();
 //		Person p = new Person();
 //		System.out.println(p);
 //		
