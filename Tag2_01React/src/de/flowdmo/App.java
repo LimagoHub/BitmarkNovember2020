@@ -35,15 +35,17 @@ public class App {
 //		
 //		System.out.println("nach beenden");
 //		
-		final List<String> items = List.of("eins","zwei","drei", "vier");
+		final List<String> items = List.of("1","2","3", "4");
 		
 		final ForkJoinPool pool = ForkJoinPool.commonPool();
 		
 		final SubmissionPublisher<String> publisher = new SubmissionPublisher<String>(pool, 1);
+		final TransformProcessor<String, Integer> transformProcessor = new TransformProcessor<>(Integer::parseInt);
 		
-		final EndSubscriber<String> subscriber = new EndSubscriber<>();
+		final EndSubscriber<Integer> subscriber = new EndSubscriber<>();
 		
-		publisher.subscribe(subscriber);
+		publisher.subscribe(transformProcessor);
+		transformProcessor.subscribe(subscriber);
 		
 		items.forEach(publisher::submit);
 		

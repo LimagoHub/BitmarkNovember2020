@@ -17,7 +17,7 @@ public class EndSubscriber<T> implements Subscriber<T> {
 	public void onNext(T item) {
 		System.out.println("Got: " + item);
 		subscription.request(1);
-		throw new RuntimeException("Arrrghh!");
+		
 	}
 
 	@Override
