@@ -30,7 +30,9 @@ public class TransformProcessor<T,R> extends SubmissionPublisher<R> implements P
 	@Override
 	public void onNext(T item) {
 		System.out.println("Transforming item: " + item);
-		submit(function.apply(item));
+		R retval = function.apply(item);
+		if(retval != null)
+			submit(retval);
         subscription.request(1);
 		
 	}
